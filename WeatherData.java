@@ -10,15 +10,33 @@ public class WeatherData
     { 
         for (int i = 0; i < temperatures.size(); i++)
         {
-            double temps = temperatures.get(i);
+            double temp = temperatures.get(i);
             if (temp < lower || temp > upper)
             {
                 temperatures.remove(i);
+                i--;
             }
         }
     }
+    public String toString()
+    {
+        return temperatures.toString();
+    }
     public int longestHeatWave(double threshold)
-    { /* to be implemented in part (b) */ }
+    { 
+        int heatWave = 0;
+        int max = 0;
+        for (double t:temperatures)
+        {
+            if (t>threshold)
+            {
+                heatWave++;
+                if (heatWave > max) max = heatWave;
+            }
+            else heatWave = 0;         
+        }
+        return max;
+    }
     
-    // There may be instance variables, constructors, and methods that are not shown.
+ 
 }
